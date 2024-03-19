@@ -6,7 +6,7 @@
 /*   By: likiffel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 20:54:41 by likiffel          #+#    #+#             */
-/*   Updated: 2024/03/18 02:24:35 by likiffel         ###   ########.fr       */
+/*   Updated: 2024/03/19 18:45:45 by likiffel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -37,6 +37,20 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
+void	ft_bzero(void *s, size_t n)
+{
+	char	*str;
+	size_t	i;
+
+	str = (char *)s;
+	i = 0;
+	while (i < n)
+	{
+		str[i] = '\0';
+		i++;
+	}
+}
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	len1;
@@ -60,22 +74,25 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (result);
 }
 
-char    *ft_strdup(const char *s1)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-        int             i;
-        char    *dest;
+	void	*result;
 
-        i = 0;
-        dest = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char));
-        if (dest == NULL)
-                return (NULL);
-        while (s1[i] != '\0')
-        {
-                dest[i] = s1[i];
-                i++;
-        }
-        dest[i] = '\0';
-        return (dest);
+	if (nmemb == 0 || size == 0)
+	{
+		result = malloc (1);
+		if (result == NULL)
+			return (NULL);
+		ft_bzero(result, 1);
+		return (result);
+	}
+	if (nmemb > SIZE_MAX / size)
+		return (NULL);
+	if (nmemb <= 0 || size <= 0)
+		return (NULL);
+	result = malloc(nmemb * size);
+	if (result == NULL)
+		return (NULL);
+	ft_bzero(result, nmemb * size);
+	return (result);
 }
-
-
