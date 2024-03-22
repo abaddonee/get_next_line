@@ -6,7 +6,7 @@
 /*   By: likiffel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 20:54:41 by likiffel          #+#    #+#             */
-/*   Updated: 2024/03/19 18:45:45 by likiffel         ###   ########.fr       */
+/*   Updated: 2024/03/22 16:30:01 by likiffel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -74,25 +74,20 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (result);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strdup(const char *s1)
 {
-	void	*result;
+	int		i;
+	char	*dest;
 
-	if (nmemb == 0 || size == 0)
+	i = 0;
+	dest = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char));
+	if (dest == NULL)
+		return (NULL);
+	while (s1[i] != '\0')
 	{
-		result = malloc (1);
-		if (result == NULL)
-			return (NULL);
-		ft_bzero(result, 1);
-		return (result);
+		dest[i] = s1[i];
+		i++;
 	}
-	if (nmemb > SIZE_MAX / size)
-		return (NULL);
-	if (nmemb <= 0 || size <= 0)
-		return (NULL);
-	result = malloc(nmemb * size);
-	if (result == NULL)
-		return (NULL);
-	ft_bzero(result, nmemb * size);
-	return (result);
+	dest[i] = '\0';
+	return (dest);
 }
