@@ -1,16 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: likiffel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 15:43:46 by likiffel          #+#    #+#             */
-/*   Updated: 2024/03/22 18:08:36 by likiffel         ###   ########.fr       */
+/*   Created: 2024/03/22 17:41:41 by likiffel          #+#    #+#             */
+/*   Updated: 2024/03/22 18:09:30 by likiffel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -91,7 +90,7 @@ char	*set(char *line_buf)
 
 char	*get_next_line(int fd)
 {
-	static char	*left;
+	static char	*left[1024];
 	char		*line;
 	char		*buf;
 
@@ -99,18 +98,18 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
 		free(buf);
-		free(left);
-		left = NULL;
+		free(left[fd]);
+		left[fd] = NULL;
 		buf = NULL;
 		return (NULL);
 	}
 	if (!buf)
 		return (NULL);
-	line = fill_line(fd, left, buf);
+	line = fill_line(fd, left[fd], buf);
 	free(buf);
 	buf = NULL;
 	if (!line)
 		return (NULL);
-	left = set(line);
+	left[fd] = set(line);
 	return (line);
 }

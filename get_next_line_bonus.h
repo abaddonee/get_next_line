@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: likiffel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/16 20:50:05 by likiffel          #+#    #+#             */
-/*   Updated: 2024/03/22 18:05:54 by likiffel         ###   ########.fr       */
+/*   Created: 2024/03/22 17:45:12 by likiffel          #+#    #+#             */
+/*   Updated: 2024/03/22 18:05:33 by likiffel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
